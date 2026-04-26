@@ -2,7 +2,6 @@
 
 const icon = document.querySelector(".fa-regular.fa-circle-up");
 
-/*OPRAVA*/
 if (icon) {
   window.addEventListener("scroll", () => {
     if (window.scrollY >= 50) {
@@ -29,22 +28,22 @@ const emailMessage = document.getElementById("emailMessage");
 
 const checkEmail = () => {
   emailMessage.textContent = "";
-  emailUser.classList.remove("is-valid", "is-invalid"); //Zmena
+  emailUser.classList.remove("is-valid", "is-invalid");
   if (emailUser.value === "") {
   } else if (emailUser.checkValidity()) {
-    emailUser.classList.add("is-valid"); //Zmena
+    emailUser.classList.add("is-valid"); 
   } else {
-    emailUser.classList.add("is-invalid"); //Zmena
+    emailUser.classList.add("is-invalid"); 
   }
 };
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  emailMessage.classList.remove("msg-success", "msg-error"); //Zmena
+  emailMessage.classList.remove("msg-success", "msg-error"); 
 
   if (emailUser.value.trim() === "") {
     emailMessage.textContent = "Pole nesmí být prázdné.";
-    emailMessage.classList.add("msg-error"); //Zmena
+    emailMessage.classList.add("msg-error"); 
   } else if (emailUser.checkValidity()) {
     emailMessage.textContent =
       "Děkujeme za váš zájem! Podívejte se do své e-mailové schránky.";
