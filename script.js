@@ -2,14 +2,13 @@
 
 const icon = document.querySelector(".fa-regular.fa-circle-up");
 
+/*OPRAVA*/
 if (icon) {
   window.addEventListener("scroll", () => {
     if (window.scrollY >= 50) {
-      icon.style.visibility = "visible";
-      icon.style.opacity = "1";
+      icon.classList.add("is-visible");
     } else {
-      icon.style.visibility = "hidden";
-      icon.style.opacity = "0";
+      icon.classList.remove("is-visible");
     }
   });
 
@@ -30,27 +29,29 @@ const emailMessage = document.getElementById("emailMessage");
 
 const checkEmail = () => {
   emailMessage.textContent = "";
+  emailUser.classList.remove("is-valid", "is-invalid"); //Zmena
   if (emailUser.value === "") {
-    emailUser.style.borderColor = "";
   } else if (emailUser.checkValidity()) {
-    emailUser.style.borderColor = "green";
+    emailUser.classList.add("is-valid"); //Zmena
   } else {
-    emailUser.style.borderColor = "red";
+    emailUser.classList.add("is-invalid"); //Zmena
   }
 };
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
+  emailMessage.classList.remove("msg-success", "msg-error"); //Zmena
+
   if (emailUser.value.trim() === "") {
     emailMessage.textContent = "Pole nesmí být prázdné.";
-    emailMessage.style.color = "red";
+    emailMessage.classList.add("msg-error"); //Zmena
   } else if (emailUser.checkValidity()) {
     emailMessage.textContent =
       "Děkujeme za váš zájem! Podívejte se do své e-mailové schránky.";
-    emailMessage.style.color = "green";
+    emailMessage.classList.add("msg-success");
   } else {
     emailMessage.textContent = "Zadejte prosím platnou e-mailovou adresu.";
-    emailMessage.style.color = "red";
+    emailMessage.classList.add("msg-error");
   }
 });
 

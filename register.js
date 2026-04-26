@@ -10,6 +10,8 @@ const message = document.getElementById("message");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  message.classList.remove("msg-success", "msg-error");
+
   if (
     password.value === passwordAgain.value &&
     password.value !== "" &&
@@ -19,29 +21,31 @@ form.addEventListener("submit", (e) => {
     firstName.value !== ""
   ) {
     message.textContent = "Děkujeme za registraci";
-    message.style.color = "green";
+    message.classList.add("msg-success");
   } else {
     message.textContent = "Nemáte správně vyplněné všechny údaje";
-    message.style.color = "red";
+    message.classList.add("msg-error");
   }
 });
 
 //2. Validácia a zhoda hesiel
 
 const checkPasswords = () => {
+  password.classList.remove("is-valid", "is-invalid");
+  passwordAgain.classList.remove("is-valid", "is-invalid");
+  message.classList.remove("msg-error");
+
   if (password.value === "" && passwordAgain.value === "") {
-    password.style.borderColor = "";
-    passwordAgain.style.borderColor = "";
     message.textContent = "";
   } else if (password.value === passwordAgain.value) {
-    password.style.borderColor = "green";
-    passwordAgain.style.borderColor = "green";
+    password.classList.add("is-valid");
+    passwordAgain.classList.add("is-valid");
     message.textContent = "";
   } else {
-    password.style.borderColor = "red";
-    passwordAgain.style.borderColor = "red";
+    password.classList.add("is-invalid");
+    passwordAgain.classList.add("is-invalid");
     message.textContent = "Hesla se neshodují";
-    message.style.color = "red";
+    message.classList.add("msg-error");
   }
 };
 
@@ -52,3 +56,5 @@ form.addEventListener("input", (e) => {
     message.textContent = "";
   }
 });
+
+message.classList.remove("msg-success", "msg-error");

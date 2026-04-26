@@ -377,3 +377,29 @@ body {
     padding: 0.4rem 0.6rem;
   }
 }
+
+/*OPRAVA STYLE.CSS PRE JS - pridanie tried */
+
+/* Scrollovanie */
+
+.fa-regular.fa-circle-up.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+/* Triedy pre validáciu */
+
+.is-valid {
+  border-color: green !important;
+}
+
+.is-invalid {
+  border-color: red !important;
+}
+
+.msg-success {
+  color: green !important;
+}
+
+.msg-error {
+  color: red !important;
+}
